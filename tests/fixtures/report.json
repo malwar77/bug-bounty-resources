@@ -1,0 +1,42 @@
+{
+  "summary": {
+    "total": 4,
+    "passed": 1,
+    "warnings": 2,
+    "failures": 1
+  },
+  "quality_gate": [
+    "BROKEN_INTERNAL_FILE"
+  ],
+  "warning_categories": [
+    "PASSED_EXCLUDED"
+  ],
+  "failures": [
+    {
+      "file": "sample.md",
+      "line": 4,
+      "url": "does_not_exist_file.md",
+      "status": 404,
+      "category": "BROKEN_INTERNAL_FILE",
+      "destination": "does_not_exist_file.md"
+    }
+  ],
+  "warnings": [
+    {
+      "file": "sample.md",
+      "line": 5,
+      "url": "https://twitter.com/example",
+      "status": 200,
+      "category": "PASSED_EXCLUDED",
+      "destination": "https://twitter.com/example"
+    },
+    {
+      "file": "sample.md",
+      "line": 6,
+      "url": "https://medium.com/@example/post",
+      "status": 200,
+      "category": "PASSED_EXCLUDED",
+      "destination": "https://medium.com/@example/post"
+    }
+  ]
+}

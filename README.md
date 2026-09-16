@@ -97,3 +97,33 @@ chmod +x scripts/lint-and-check.sh
 # Or with overrides
 LINKCHECK_TIMEOUT=30 LINKCHECK_CONCURRENCY=4 ./scripts/lint-and-check.sh
 ```
+
+### Overriding Settings via CLI Flags & Environment Variables
+
+The local script supports direct CLI flags that override `lychee.toml`:
+
+```bash
+# Custom timeout and concurrency
+./scripts/lint-and-check.sh --timeout 25 --concurrency 12
+
+# Target a specific file or directory
+./scripts/lint-and-check.sh --target-dir assets/tools.md
+
+# Custom Quality Gate (e.g. only fail on missing internal files)
+./scripts/lint-and-check.sh --quality-gate BROKEN_INTERNAL_FILE
+
+# Validate config schema only
+python3 scripts/validate_config.py lychee.toml
+
+# Run the test fixture regression suite
+python3 -m unittest discover tests -v
+```
+
+### Manual Workflow Dispatch Inputs (GitHub Actions)
+
+When triggering `.github/workflows/ci.yml` via `workflow_dispatch`, the following parameters are available:
+- `quality_gate_categories`: Comma-separated categories to fail on (default: `BROKEN_NOT_FOUND,BROKEN_INTERNAL_FILE,TIMEOUT_OR_DNS_FAILURE,HTTP_5XX`).
+- `warning_categories`: Comma-separated categories to flag as warnings (default: `REDIRECTED,BOT_PROTECTED_OR_AUTH`).
+- `linkcheck_timeout`: Timeout in seconds per HTTP probe (default: `15`).
+- `linkcheck_concurrency`: Max concurrent connections (default: `8`).
+- `cache_dir`: Lychee cache directory (default: `.lycheecache`).

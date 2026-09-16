@@ -9,16 +9,24 @@ on:
     - cron: '0 8 * * 1'
   workflow_dispatch:
     inputs:
+      quality_gate_categories:
+        description: 'Comma-separated categories that FAIL the build'
+        required: false
+        default: 'BROKEN_NOT_FOUND,BROKEN_INTERNAL_FILE,TIMEOUT_OR_DNS_FAILURE,HTTP_5XX'
+      warning_categories:
+        description: 'Comma-separated categories that report warnings only'
+        required: false
+        default: 'REDIRECTED,BOT_PROTECTED_OR_AUTH'
       linkcheck_timeout:
-        description: 'Request timeout in seconds for link checks'
+        description: 'Request timeout in seconds'
         required: false
         default: '15'
       linkcheck_concurrency:
-        description: 'Maximum concurrent link-check requests'
+        description: 'Maximum concurrent requests'
         required: false
         default: '8'
       cache_dir:
-        description: 'Directory for the lychee link cache'
+        description: 'Path for lychee cache directory'
         required: false
         default: '.lycheecache'
 
@@ -27,14 +35,31 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Quality gate: which result categories FAIL the build.
-  # Everything else (REDIRECTED, BOT_PROTECTED_OR_AUTH, ARCHIVE_UNREACHABLE) is a warning only.
-  QUALITY_GATE_CATEGORIES: 'BROKEN_NOT_FOUND,BROKEN_INTERNAL_FILE,TIMEOUT_OR_DNS_FAILURE,HTTP_5XX'
-  LINKCHECK_TIMEOUT: '15'
-  LINKCHECK_CONCURRENCY: '8'
-  LINKCHECK_CACHE_DIR: '.lycheecache'
+  QUALITY_GATE_CATEGORIES: ${{ github.event.inputs.quality_gate_categories || 'BROKEN_NOT_FOUND,BROKEN_INTERNAL_FILE,TIMEOUT_OR_DNS_FAILURE,HTTP_5XX' }}
+  WARNING_CATEGORIES: ${{ github.event.inputs.warning_categories || 'REDIRECTED,BOT_PROTECTED_OR_AUTH' }}
+  LINKCHECK_TIMEOUT: ${{ github.event.inputs.linkcheck_timeout || '15' }}
+  LINKCHECK_CONCURRENCY: ${{ github.event.inputs.linkcheck_concurrency || '8' }}
+  LINKCHECK_CACHE_DIR: ${{ github.event.inputs.cache_dir || '.lycheecache' }}
 
 jobs:
+  validate-and-test:
+    name: Schema Validation & Regression Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate lychee.toml schema and values
+        run: python3 scripts/validate_config.py lychee.toml
+
+      - name: Run link-checker unit & regression test suite
+        run: python3 -m unittest discover tests -v
+
   markdown-lint:
     name: Markdown Linting
     runs-on: ubuntu-latest
@@ -61,6 +86,7 @@ jobs:
 
   link-check:
     name: Link Checking & Quality Gate
+    needs: [validate-and-test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -79,15 +105,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-lychee-
 
-      - name: Run lychee link checker (config from lychee.toml, overrides from inputs)
+      - name: Run lychee link checker (reads lychee.toml)
         uses: lycheeverse/lychee-action@v2
         with:
-          # lychee reads lychee.toml automatically; timeout/concurrency overridden by inputs
           args: >-
             --verbose
             --no-progress
-            --timeout ${{ github.event.inputs.linkcheck_timeout || env.LINKCHECK_TIMEOUT }}
-            --max-concurrency ${{ github.event.inputs.linkcheck_concurrency || env.LINKCHECK_CONCURRENCY }}
+            --timeout ${{ env.LINKCHECK_TIMEOUT }}
+            --max-concurrency ${{ env.LINKCHECK_CONCURRENCY }}
             --cache
             --max-cache-age 1d
             --cache-exclude-status '429,5..'
@@ -100,14 +125,19 @@ jobs:
 
       - name: Quality gate, annotations & step summary
         run: |
-          export QUALITY_GATE_CATEGORIES="${{ env.QUALITY_GATE_CATEGORIES }}"
-          export LINKCHECK_CACHE_DIR="${{ env.LINKCHECK_CACHE_DIR }}"
-          python3 scripts/check_links.py | tee audit_output.txt
+          python3 scripts/check_links.py \
+            --timeout "${{ env.LINKCHECK_TIMEOUT }}" \
+            --concurrency "${{ env.LINKCHECK_CONCURRENCY }}" \
+            --quality-gate "${{ env.QUALITY_GATE_CATEGORIES }}" \
+            --warning-categories "${{ env.WARNING_CATEGORIES }}" | tee audit_output.txt
           GATE_STATUS="${PIPESTATUS[0]}"
+          
           echo "### 🔗 Link Audit Summary" >> $GITHUB_STEP_SUMMARY
           if [ -f lychee-report.md ]; then
             cat lychee-report.md >> $GITHUB_STEP_SUMMARY
           fi
-          echo "Quality gate categories (fail): \`$QUALITY_GATE_CATEGORIES\`" >> $GITHUB_STEP_SUMMARY
-          echo "Gate exit status: $GATE_STATUS" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Quality Gate Fail Categories:** \`${{ env.QUALITY_GATE_CATEGORIES }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Warning Categories:** \`${{ env.WARNING_CATEGORIES }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Exit Status:** \`$GATE_STATUS\`" >> $GITHUB_STEP_SUMMARY
           exit "$GATE_STATUS"
