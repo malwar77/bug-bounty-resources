@@ -3,14 +3,14 @@
 ## Vulnerabilities 💉
 This page is created to help hackers understand a specific vulnerability type in details. 
 
-- If you would like to get some hands on experience by hacking more in detailed labs, please read the [labs](https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/assets/labs.md) page
-- If you would like to read blog posts and see example vulnerability, please read the [blog posts](https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/assets/blogsposts.md) page
+- If you would like to get some hands on experience by hacking more in detailed labs, please read the [labs](../assets/labs.md) page
+- If you would like to read blog posts and see example vulnerability, please read the [blog posts](../assets/blogposts.md) page
 
 ### Online Resources & Frameworks
-- [Owasp Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
+- [Owasp Top 10](https://owasp.org/www-project-top-ten/)
 	- [TryHackMe's OWASP Top 10 Room](https://tryhackme.com/room/owasptop10)
 	- [OWASP top 10 by Snyk](https://learn.snyk.io/learning-paths/owasp-top-10/javascript/)
-- [OWASP Testing Guide v4](https://www.owasp.org/index.php/OWASP_Testing_Project)
+- [OWASP Testing Guide v4](https://owasp.org/www-project-web-security-testing-guide/)
 - [Bug Bounty Cheat Sheets](https://github.com/EdOverflow/bugbounty-cheatsheet) - by EdOverflow
 - [WebSecurity Academy by PortSwigger](https://portswigger.net/web-security/)
 ---
@@ -21,11 +21,11 @@ As we start to build this repository, we'll be adding more vulnerability types a
 XSS is a great place to start as it's one of the most popular and easiest vulnerabilities to find in a web application.
 ### Reading Material
 - [WebSec Academy - Cross-Site Scripting](https://portswigger.net/web-security/cross-site-scripting)
-- [OWASP XSS](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
+- [OWASP XSS](https://owasp.org/www-community/attacks/xss/))
 - [XSS Filter Evasion Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html)
 - [Cross-site scripting - Executing untrusted JavaScript in a trusted context](https://learn.snyk.io/lessons/xss/javascript/)
 - [A comprehensive tutorial on cross-site scripting](https://excess-xss.com)
-- [The 7 main XSS cases everyone should know](https://brutelogic.com.br/blog/the-7-main-xss-cases-everyone-should-know/) - [brutelogic](https://brutelogic.com.br/blog/about/)
+- [The 7 main XSS cases everyone should know](https://web.archive.org/web/20210619183000/https://brutelogic.com.br/blog/the-7-main-xss-cases-everyone-should-know/) - [brutelogic](https://brutelogic.net/about/)
 ### Video Content 
 - [Cross-Site Scripting (XSS) Explained](https://www.youtube.com/watch?v=EoaDgUgS6QA) - by PwnFunction
 - [Finding Your First Bug: Cross Site Scripting (XSS)](https://www.youtube.com/watch?v=IWbmP0Z-yQg) - by InsiderPhD
@@ -34,7 +34,7 @@ XSS is a great place to start as it's one of the most popular and easiest vulner
 - [xssLABS](https://www.xsslabs.com/)
 - [Codelatte](https://codelatte.id/labs/xss/)
 - [Google XSS Game](https://xss-game.appspot.com/)
-- [Pwnfunction XSS](https://xss.pwnfunction.com/)
+- [Pwnfunction XSS](https://github.com/cure53/XSS-Challenge-Wiki/wiki)
 
 ## Cross-Site Request Forgery (CSRF)
 ### Reading Material
@@ -84,7 +84,7 @@ XSS is a great place to start as it's one of the most popular and easiest vulner
 ## XML External Entities (XXE)
 ### Reading Material
 - [WebSec Academy - XML External Entity (XXE) injection](https://portswigger.net/web-security/xxe)
-- [XML External Entity (XXE) Processing by OWASP](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing)
+- [XML External Entity (XXE) Processing by OWASP](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing)_Processing)
 - [How to Find XXE Bugs: Severe, Missed and Misunderstood by Luke Stephens](https://www.bugcrowd.com/blog/how-to-find-xxe-bugs/)
 ### Videos
 - [XML External Entities ft. JohnHammond](https://www.youtube.com/watch?v=gjm6VHZa_8s) - by PwnFunction

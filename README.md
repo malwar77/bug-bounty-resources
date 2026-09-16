@@ -24,18 +24,18 @@ I have also put together my own resource:
 ---
 ## Table of Contents
 
-- [Basics](/assets/basics.md)
-- [Blog posts & Talks](/assets/blogposts.md)
-- [Books](/assets/books.md)
-- [Setup](/assets/setup.md)
-- [Tools](/assets/tools.md)
-- [Labs & Testing Environments](/assets/labs.md)
-- [Talks](/assets/talks.md)
-- [Vulnerability Types](/assets/vulns.md)
-- [Mobile Hacking](/assets/mobile.md)
-- [Coding & Scripting](/assets/coding.md)
-- [Media Resources](/assets/media.md)
-- [Mindset & Mental Health](/assets/health.md)
+- [Basics](./assets/basics.md)
+- [Blog posts & Talks](./assets/blogposts.md)
+- [Books](./assets/books.md)
+- [Setup](./assets/setup.md)
+- [Tools](./assets/tools.md)
+- [Labs & Testing Environments](./assets/labs.md)
+- [Talks](./assets/talks.md)
+- [Vulnerability Types](./assets/vulns.md)
+- [Mobile Hacking](./assets/mobile.md)
+- [Coding & Scripting](./assets/coding.md)
+- [Media Resources](./assets/media.md)
+- [Mindset & Mental Health](./assets/health.md)
 
 ---
 If you have more questions or suggestions, check out [NahamSec's Discord](https://discord.gg/9jZxjQ5)!<br>

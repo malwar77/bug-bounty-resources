@@ -1,5 +1,5 @@
 # Resources-for-Beginner-Bug-Bounty-Hunters
-This page is designated to hosts blog posts on particular vulnerability and techniques that have led to a bounty. If you would like to learn more about specific vulnerability types, please visit [Vulnerability Types](https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters/assets/vulns.md)!
+This page is designated to hosts blog posts on particular vulnerability and techniques that have led to a bounty. If you would like to learn more about specific vulnerability types, please visit [Vulnerability Types](../assets/vulns.md)!
 
 ## NahamSec's Favorite Learning Resources
 - [HackerOne Hacktivity](https://hackerone.com/hacktivity)
@@ -21,10 +21,10 @@ This page is designated to hosts blog posts on particular vulnerability and tech
 - [Shubham Shah](https://shubs.io/)
 - [spaceraccoon](https://spaceraccoon.dev)
 - [ziot](https://buer.haus/)
-- [zlz](https://samcurry.net/blog)
+- [zlz](https://samcurry.net/)
 - [Vickie Li](https://vickieli.medium.com)
 - [rez0](https://rez0.blog/)
-- [MrTuxracer](https://www.rcesecurity.com/blog/)
+- [MrTuxracer](https://www.rcesecurity.com/)
 - [Pentest Book by six2dez](https://github.com/six2dez/pentest-book/)
 - [Youssef Sammouda](https://ysamm.com/)
 
@@ -93,7 +93,7 @@ You can find a ton of awesome XSS reports by searching through the HackerOne Hac
 - [Time-Based Blind SQL Injection In GraphQL](https://medium.com/bugbountywriteup/time-based-blind-sql-injection-in-graphql-39a25a1dfb3c) - Divyanshu Shukla
 - [SQL Injection Extracts Starbucks Enterprise Accounting, Financial, Payroll Database](https://hackerone.com/reports/531051) - spaceraccoon
 - [Finding SQL injections fast with white-box analysis — a recent bug example](https://medium.com/@frycos/finding-sql-injections-fast-with-white-box-analysis-a-recent-bug-example-ca449bce6c76?) - [@frycos](https://twitter.com/frycos)
-- [How we hacked one of the worlds largest Cryptocurrency Website](https://strynx.org/insecure-crypto-code-execution/) - [strynx](https://strynx.org/)
+- [How we hacked one of the worlds largest Cryptocurrency Website](https://web.archive.org/web/20210123061614/https://web.archive.org/web/20210123061614/https://strynx.org/insecure-crypto-code-execution/) - [strynx](https://web.archive.org/web/20210123061614/https://strynx.org/)
 - [Blind SQL Injection on windows10.hi-tech.mail.ru](https://hackerone.com/reports/786044) - Просто душка (api_0)
 - [How to Hack Database Links in SQL Server!](https://blog.netspi.com/how-to-hack-database-links-in-sql-server/) - Antti Rantasaari
 
@@ -106,19 +106,19 @@ You can find a ton of awesome XSS reports by searching through the HackerOne Hac
 - [Webshell via File Upload on ecjobs.starbucks.com.cn](https://hackerone.com/reports/506646) - johnstone
 - [Facebook Messenger server random memory exposure through corrupted GIF image ](https://www.vulnano.com/2019/03/facebook-messenger-server-random-memory.html) - [@xdzmitry](https://twitter.com/xdzmitry)
 - [A Tale of Exploitation in Spreadsheet File Conversions](https://buer.haus/2019/10/18/a-tale-of-exploitation-in-spreadsheet-file-conversions/) - [@bbuerhaus](https://twitter.com/bbuerhaus)//[@daeken](https://twitter.com/daeken)//[@erbbysam](https://twitter.com/erbbysam)//[@smiegles](https://twitter.com/smiegles)
-- [External XML Entity via File Upload (SVG)](https://0xatul.github.io/posts/2020/02/external-xml-entity-via-file-upload-svg/) - by 0xatul
+- [External XML Entity via File Upload (SVG)](https://web.archive.org/web/20201026040857/https://0xatul.github.io/posts/2020/02/external-xml-entity-via-file-upload-svg/) - by 0xatul
 
 ### IDOR
-- [Steal Earning of Airbnb hosts by Adding Bank Account/Payment Method](https://www.indoappsec.in/2019/12/airbnb-steal-earning-of-airbnb-hosts-by.html) - [Vijay Kumar ](https://twitter.com/IndoAppSec)
+- [Steal Earning of Airbnb hosts by Adding Bank Account/Payment Method](https://web.archive.org/web/20210515152000/https://www.indoappsec.in/2019/12/airbnb-steal-earning-of-airbnb-hosts-by.html) - [Vijay Kumar ](https://twitter.com/IndoAppSec)
 - [GraphQL IDOR leads to information disclosure](https://medium.com/@R0X4R/graphql-idor-leads-to-information-disclosure-175eb560170d) - [@R0X4R](https://twitter.com/R0X4R)
-- [From Multiple IDORs leading to Code Execution on a different Host Container](https://www.rahulr.in/2019/10/idor-to-rce.html?m=1) - [@Rahul_R95](https://twitter.com/Rahul_R95)
+- [From Multiple IDORs leading to Code Execution on a different Host Container](https://web.archive.org/web/20210228020959/https://www.rahulr.in/2019/10/idor-to-rce.html) - [@Rahul_R95](https://twitter.com/Rahul_R95)
 - [Automating BURP to find IDORs](https://medium.com/cyberverse/automating-burp-to-find-idors-2b3dbe9fa0b8) - [Aditya Soni](https://medium.com/@hetroublemakr)
 - [Another image removal vulnerability on Facebook](https://blog.darabi.me/2020/06/image-removal-vulnerability-on-facebook.html)
 - [Stealing Your Private YouTube Videos, One Frame at a Time](https://bugs.xdavidhu.me/google/2021/01/11/stealing-your-private-videos-one-frame-at-a-time/)
 
 ### GraphQL
 - [Private System Note Disclosure using GraphQL](https://hackerone.com/reports/633001) - Ron Chan
-- [Graphql Abuse to Steal Anyone’s Address](https://blog.usejournal.com/graphql-bug-to-steal-anyones-address-fc34f0374417) - pratik yadav
+- [Graphql Abuse to Steal Anyone’s Address](https://medium.com/@infosec-writeups/graphql-bug-to-steal-anyones-address-fc34f0374417) - pratik yadav
  - [Email address of any user can be queried on Report Invitation GraphQL type when username is known](https://hackerone.com/reports/792927) - msdian7
 
 ### RCE
@@ -127,10 +127,10 @@ You can find a ton of awesome XSS reports by searching through the HackerOne Hac
 
 ### Automation & Recon
 - [How to: Recon & Content Discovery](https://www.hackerone.com/blog/how-to-recon-and-content-discovery)
-- [Subdomain Recon Using Certificate Search Technique](https://www.r00tpgp.com/2020/01/subdomain-recon-using-certificate.html?m=0)
+- [Subdomain Recon Using Certificate Search Technique](https://web.archive.org/web/20210126135804/https://www.r00tpgp.com/2020/01/subdomain-recon-using-certificate.html)
 - [Notes about NahamSec's Recon Sessions](https://mavericknerd.github.io/knowledgebase/nahamsec/recon_session_1/) - [maverickNerd](https://github.com/maverickNerd)
 - [10 Recon Tools For Bug Bounty](https://medium.com/@hackbotone/10-recon-tools-for-bug-bounty-bafa8a5961bd) - Anshuman Pattnaik
-- [Recon: Create a methodology and start your subdomain enumeration](https://failednuke.info/2020/recon-create-a-methodology-and-start-your-subdomain-enumeration/) - by FailedNuke
+- [Recon: Create a methodology and start your subdomain enumeration](https://web.archive.org/web/20210127110034/https://failednuke.info/2020/recon-create-a-methodology-and-start-your-subdomain-enumeration/) - by FailedNuke
 - [THEY SEE ME SCANNIN’, THEY HATIN’: A BEGINNER’S GUIDE TO NMAP](https://securityqueens.co.uk/they-see-me-scannin-they-hatin-a-beginners-guide-to-nmap/) - by Sophia (https://twitter.com/SecQueens)
 - [Fasten your Recon process using Shell Scripting](https://medium.com/bugbountywriteup/fasten-your-recon-process-using-shell-scripting-359800905d2a) - Mohd Shibli
 - [Beginner’s Guide to recon automation](https://medium.com/bugbountywriteup/beginners-guide-to-recon-automation-f95b317c6dbb) - Ashish Jha
@@ -149,8 +149,8 @@ You can find a ton of awesome XSS reports by searching through the HackerOne Hac
 - [Hacking GitHub with Unicode's dotless 'i'](https://eng.getwisdom.io/hacking-github-with-unicode-dotless-i/)
 - [Abusing autoresponders and email bounces](https://medium.com/intigriti/abusing-autoresponders-and-email-bounces-9b1995eb53c2) - securinti
 - [Abusing HTTP hop-by-hop request headers](https://nathandavison.com/blog/abusing-http-hop-by-hop-request-headers) - [@nj_dav](https://twitter.com/nj_dav)
-- [Abusing ImageMagick to obtain RCE](https://strynx.org/imagemagick-rce/) - [strynx](https://strynx.org/)
-- [How to Get a Finger on the Pulse of Corporate Networks via the SSL VPN](https://blog.detectify.com/2019/09/19/alyssa-herrera-pulse-corporate-networks-ssl-vpn/) - [Alyssa Herrera](https://twitter.com/Alyssa_Herrera_)
+- [Abusing ImageMagick to obtain RCE](https://web.archive.org/web/20210123061614/https://web.archive.org/web/20210123061614/https://strynx.org/imagemagick-rce/) - [strynx](https://web.archive.org/web/20210123061614/https://strynx.org/)
+- [How to Get a Finger on the Pulse of Corporate Networks via the SSL VPN](https://blog.detectify.com/2019/09/19/alyssa-herrera-pulse-corporate-networks-ssl-vpn/) - [Alyssa Herrera](https://x.com/Alyssa_Herrera_)
 - [Top 10 web hacking techniques of 2019](https://portswigger.net/research/top-10-web-hacking-techniques-of-2019) by [James Kettle](https://twitter.com/albinowax)
 - [Understanding Search Syntax on Github](https://help.github.com/en/github/searching-for-information-on-github/understanding-the-search-syntax#exclude-certain-results) by Github
 - [URL link spoofing (Slack)](https://hackerone.com/reports/481472) by Akaki Tsunoda (akaki)

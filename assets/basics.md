@@ -37,7 +37,7 @@ In order to be able to learn what and how an application works, you need to be a
 ### Networking basics
 Recon is a common terminology used in bug bounties. It’s great if you are already using tools to scan a range of IPs for open ports or find subdomain, however, you should first understand why these things matter and how they work.
 - [Terminology](https://www.digitalocean.com/community/tutorials/an-introduction-to-networking-terminology-interfaces-and-protocols)
-- [What is an IP?](https://commotionwireless.net/docs/cck/networking/learn-networking-basics/)
+- [What is an IP?](https://web.archive.org/web/20210414120306/https://commotionwireless.net/docs/cck/networking/learn-networking-basics/)
 - [What are ports?](https://www.utilizewindows.com/list-of-common-network-port-numbers/)
 - [What is DNS?](https://code.tutsplus.com/tutorials/an-introduction-to-learning-and-using-dns-records--cms-24704)
 
@@ -50,11 +50,11 @@ Recon is a common terminology used in bug bounties. It’s great if you are alre
 
 ### Programming Basics
 Being a great programmer is not a requirement to be a successful hacker. However, having the ability to make an educated guess, may increase your chances of successfully identifying and exploiting an issue. In a number of cases, you may need to automate your work or know more than just the “basics” in order to escalate a bug with a medium severity to high/critical.
-- HTML: HTML is very easy to learn and there are a ton of free resources for it. If you are interested in learning about XSS this should be your first step. If you prefer an interactive tool to learn about JavaScript, I highly recommend [Codecademy](http://ssqt.co/mQfH8zl) or [W3Schools](https://www.w3schools.com/html/)!
+- HTML: HTML is very easy to learn and there are a ton of free resources for it. If you are interested in learning about XSS this should be your first step. If you prefer an interactive tool to learn about JavaScript, I highly recommend [Codecademy](https://www.hackerone.com/resources/reporting/the-hackers-guide-to-submitting-quality-reports) or [W3Schools](https://www.w3schools.com/html/)!
 - JavaScript: Once you have familiarized yourself with HTML, you should understand JavaScript since you will be using it to exploit XSS vulnerabilities. The usage of JavaScript isn’t just limited to when you are exploring XSS, so it’s a very handy programming language to know.
-If you prefer an interactive tool to learn about JavaScript, I highly recommend [CodeCademy](http://ssqt.co/mQfH8zl)!
+If you prefer an interactive tool to learn about JavaScript, I highly recommend [CodeCademy](https://www.hackerone.com/resources/reporting/the-hackers-guide-to-submitting-quality-reports)!
 - SQL: You may have guessed It already, but you won’t be able to exploit complex SQL injection vulnerabilities before having any SQL knowledge.
-As always, if you prefer an interactive course, feel free to use [CodeCademy](http://ssqt.co/mQfH8zl)!
+As always, if you prefer an interactive course, feel free to use [CodeCademy](https://www.hackerone.com/resources/reporting/the-hackers-guide-to-submitting-quality-reports)!
 https://www.codecademy.com/learn/learn-sql
 http://www.sqlcourse.com/
 

@@ -29,14 +29,14 @@
 #### Misc
 - [0l4bs - Cross-site scripting labs for web application security enthusiasts](https://github.com/tegal1337/0l4bs) - by tegal1337
 - [Will it CORS?](https://httptoolkit.tech/will-it-cors/) | Tell this magic CORS machine what you want, and it'll tell you exactly what to do
-- [XSS Labs from PwnFunction](https://xss.pwnfunction.com/) Great Labs in a beautiful layout
+- [XSS Labs from PwnFunction](https://github.com/cure53/XSS-Challenge-Wiki/wiki) Great Labs in a beautiful layout
 
 ### Vulnerable Apps
 - [https://application.security/ - SSRF](https://application.security/free-application-security-training/server-side-request-forgery-in-capital-one)
 
 #### XSS
 - [alert 1 to win](https://alf.nu/alert1/)
-- [prompt(1)](http://prompt.ml/0)
+- [prompt(1)](https://prompt.ml/0)
 - [XSS Game By Google](https://xss-game.appspot.com/)
 
 ### General Hacking
@@ -51,7 +51,7 @@
 #### Premium
 - [TryHackMe](https://tryhackme.com/signup?referrer=nahamsec) | Cool Hacking & Pentesting Labs with Web Challenges
 - [HackTheBox](https://www.hackthebox.eu/) | provides Testing Labs, some Web Application Challenges
-- [Cyberseclabs](https://www.cyberseclabs.co.uk/)
+- [Cyberseclabs](https://web.archive.org/web/20230325120000/https://cyberseclabs.co.uk/)
 
 ---
 back to [Intro Page](/README.md)

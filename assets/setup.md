@@ -11,7 +11,7 @@ This section will help you set up your testing environement.
 - [Introduction to Docker for CTFs](https://www.youtube.com/watch?v=cPGZMt4cJ0I) (Works for Bug Bounty too) - by LiveOverflow
 - [Docker Tutorial for Beginners - A Full DevOps Course on How to Run Applications in Containers](https://www.youtube.com/watch?v=fqMOX6JJhGo) - freecodecamp
 - [Creating Wordlists for Pentesting & Bug Bounty](https://www.youtube.com/watch?v=QGbTaxtEQlg) - by nahamsec
-- [Setup bugbounty hunting env on termux](https://www.hahwul.com/2020/05/setup-bugbounty-hunting-env-on-termux-d.html?m=1) - by @hahwul
+- [Setup bugbounty hunting env on termux](https://www.hahwul.com/2020/05/17/setup-bugbounty-hunting-env-on-termux/) - by @hahwul
 - [Technical Project Ideas Towards Learning Cyber Security](https://mchow01.github.io/education/security/projects/2020/06/19/technical_projects_security.html) - by [Ming Y. Chow](https://mchow01.github.io/)
 
 ## Burp Suite

@@ -1,0 +1,56 @@
+name: Markdown Quality & Link Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run weekly on Monday at 08:00 UTC to detect link rot early
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  markdown-lint:
+    name: Markdown Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run markdownlint-cli2
+        run: |
+          npx --yes markdownlint-cli2 "**/*.md" "#node_modules"
+
+  link-check:
+    name: Link Checking (lychee)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run lychee link checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --exclude-mail
+            --max-concurrency 10
+            --timeout 15
+            --accept 200,204,401,403
+            --exclude "^https://(twitter|x)\.com"
+            --exclude "^https://(www\.)?linkedin\.com"
+            --exclude "^https://(www\.)?youtube\.com"
+            --exclude "^https://medium\.com"
+            --exclude "^https://(www\.)?amazon\.com"
+            --exclude "^https://amzn\.to"
+            "**/*.md"
+          fail: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

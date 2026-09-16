@@ -9,7 +9,7 @@
 - [GTFObins](https://gtfobins.github.io/)
 
 ### One Liners
-- [Finding ENdpoints in JS Files](https://twitter.com/renniepak/status/1287804976669040642)
+- [Finding ENdpoints in JS Files](https://web.archive.org/web/20200727144425/https://twitter.com/renniepak/status/1287804976669040642)
 
 ### Slides
 

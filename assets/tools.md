@@ -14,11 +14,53 @@ Here you can find links to a bunch of useful tools for Bug Bounty Hunting.
 7. [Notes & Organization](#Notes-&-Organization)
 8. [Others](#Others)
 
+
+## Modern Bug Bounty Toolchain (2024–2026 Ecosystem) 🚀
+
+The bug bounty ecosystem has largely converged around modular, high-performance Go/Rust CLI utilities and unified interceptor platforms. Below is the modern core stack with rationale, key capabilities, and prerequisites.
+
+### 1. Modern Recon & Asset Discovery (ProjectDiscovery Suite)
+| Tool | Rationale & Use Case | Prerequisites |
+|---|---|---|
+| [subfinder](https://github.com/projectdiscovery/subfinder) | Fast, passive subdomain discovery aggregating 40+ sources (Chaos, Shodan, SecurityTrails, VirusTotal). Crucial first step for discovering scope without sending active DNS traffic to targets. | Go 1.21+ or prebuilt binary. Optional API keys in `~/.config/subfinder/provider-config.yaml` for max coverage. |
+| [dnsx](https://github.com/projectdiscovery/dnsx) | High-performance multi-purpose DNS toolkit: resolves subdomains, validates wildcards, performs PTR lookups, and extracts IP ranges at scale. | Go 1.21+ or prebuilt binary. Valid resolver list. |
+| [httpx](https://github.com/projectdiscovery/httpx) | Fast multi-purpose HTTP probe: validates active web servers, retrieves status codes, titles, tech stacks (Wappalyzer integration), TLS certs, and response hashes. | Go 1.21+ or prebuilt binary. |
+| [katana](https://github.com/projectdiscovery/katana) | Modern next-gen crawler/spider supporting standard endpoints, JavaScript parsing, headless browser crawling (Chromium), and API route discovery. Replaces legacy spiders. | Go 1.21+ or prebuilt binary. Chrome/Chromium installed for headless mode. |
+| [naabu](https://github.com/projectdiscovery/naabu) | Fast port scanner written in Go designed to quickly enumerate open ports on targets before targeted service interrogation. | Go 1.21+; root/libpcap permissions for SYN scan mode. |
+
+### 2. Modern Vulnerability Scanning & Automation
+| Tool | Rationale & Use Case | Prerequisites |
+|---|---|---|
+| [nuclei](https://github.com/projectdiscovery/nuclei) | Fast, community-powered template-based vulnerability scanner covering CVEs, misconfigurations, default credentials, exposed panels, and zero-day regressions. Standards-compliant and highly customizable. | Go 1.21+ or prebuilt binary; community templates (`nuclei -update-templates`). |
+| [interactsh](https://github.com/projectdiscovery/interactsh) | Out-Of-Band (OOB) interaction gathering toolkit for detecting blind SSRF, blind XXE, blind RCE, and DNS exfiltration. Open-source alternative to Burp Collaborator. | Client binary or self-hosted interactsh server. |
+
+### 3. Modern Fuzzing & Content Discovery
+| Tool | Rationale & Use Case | Prerequisites |
+|---|---|---|
+| [ffuf](https://github.com/ffuf/ffuf) | Blazing-fast CLI web fuzzer in Go. Standard tool for virtual host discovery, parameter fuzzing, directory brute-forcing, and header fuzzing with regex matchers/filters. | Go 1.21+; SecLists wordlists. |
+| [feroxbuster](https://github.com/epi052/feroxbuster) | Fast, recursive content discovery tool written in Rust with auto-tune rate limiting, recursion depth limits, and wildcard response filtering. | Rust/Cargo or prebuilt binary. |
+| [arjun](https://github.com/s0md3v/Arjun) | HTTP parameter discovery suite finding hidden GET/POST/JSON parameters using heuristic analysis. Essential before testing for parameter-based vulnerabilities. | Python 3.8+. |
+| [kiterunner](https://github.com/Assetnote/kiterunner) | Context-aware API endpoint fuzzer built specifically for modern REST, GraphQL, and microservice route discovery using API swagger/schema datasets. | Go 1.20+; Assetnote API wordlists. |
+
+### 4. Modern Interception Proxies
+| Tool | Rationale & Use Case | Prerequisites |
+|---|---|---|
+| [Caido](https://caido.io/) | Modern, lightweight, Rust-based alternative to Burp Suite. Features native cross-platform binaries, low memory footprint, team collaboration, and a fast web UI. | Native desktop installer or Docker container. |
+| [Burp Suite Community / Pro](https://portswigger.net/burp) | The gold standard web application security testing platform with extensive BApp store ecosystem (Montoya API, Autorize, Logger++, Param Miner). | Java Runtime Environment (JRE) / bundled installer. |
+| [ZAP (OWASP ZAP)](https://www.zaproxy.org/) | Completely free, open-source web application scanner and proxy maintained under the Software Freedom Conservancy. | Java 11+. |
+
+### 5. Secrets & Source Code Hunting
+| Tool | Rationale & Use Case | Prerequisites |
+|---|---|---|
+| [TruffleHog](https://github.com/trufflesecurity/trufflehog) | Scans git repos, filesystems, and S3 buckets for high-entropy secrets and actively validates whether discovered API keys/tokens are live. | Go 1.21+ or prebuilt binary. |
+| [gitleaks](https://github.com/gitleaks/gitleaks) | Fast, lightweight static analysis secret scanner for git repositories and local directories with easy CI integration. | Go or prebuilt binary. |
+
+---
 ### Proxy & Network Sniffer
 | Name 	| Description 	| Written in   | Created by   |
 |------	|-------------	|------------  |------------- |
-|[Burp Suite](https://portswigger.net/burp)|A Proxy to intercept and manipulate Web Traffic (free & paid version). [Here](/assets/setup.md#setup) you can find Tips & Tricks to get started with Burp.|Java|Port Swigger|
-|[OWASP Zap Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)|A Proxy to intercept and manipulate Web Traffic (free).|Java|OWASP
+|[Burp Suite](https://portswigger.net/burp)|A Proxy to intercept and manipulate Web Traffic (free & paid version). [Here](./assets/setup.md#setup) you can find Tips & Tricks to get started with Burp.|Java|Port Swigger|
+|[OWASP Zap Proxy](https://www.zaproxy.org/)|A Proxy to intercept and manipulate Web Traffic (free).|Java|OWASP
 |[Caido](https://caido.io/)|A lightweight web security auditing toolkit.|Web|Caido|
 |[Wireshark](https://www.wireshark.org)|Wireshark is a network protocol analyzer that lets you capture and read network packets.|C, C++|The Wireshark team|
 
@@ -79,7 +121,7 @@ Here you can find links to a bunch of useful tools for Bug Bounty Hunting.
 |[ZoomEye](https://www.zoomeye.org/)|Search engine for specific network components|[Team from Knownsec](https://www.knownsec.com/)|
 |[NerdyData](https://nerdydata.com/)|Search Engine for Source Code|[NerdyData](https://www.crunchbase.com/organization/nerdydata)|
 |[Crunchbase](https://www.crunchbase.com/)|For finding Information about Businesses and their acquisitions|[TechCrunch](https://techcrunch.com)|
-|[Searchcode](https://searchcode.com/)|Helping you find real world examples of functions, API's and libraries over 90 languages across multiple sources|[searchcode](https://searchcode.com/about/#team)|
+|[Searchcode](https://searchcode.com/)|Helping you find real world examples of functions, API's and libraries over 90 languages across multiple sources|[searchcode](https://searchcode.com/about/)|
 
 
 ### Exploitation
@@ -101,7 +143,7 @@ Here you can find links to a bunch of useful tools for Bug Bounty Hunting.
 |[jadx](https://github.com/skylot/jadx)|Dex to Java decompiler|Java|skylot|
 |[Ghidra](https://ghidra-sre.org/)|"A software reverse engineering (SRE) suite of tools developed by NSA's Research Directorate in support of the Cybersecurity mission"|Java|NSA|
 |[dex2jar](https://github.com/pxb1988/dex2jar)|Useful to convert dex files into jar to decompile the application.|Java, Smali|Bob Pan|
-|[andriller](https://github.com/den4uk/andriller)|Andriller - is software utility with a collection of forensic tools for smartphones. It performs read-only, forensically sound, non-destructive acquisition from Android devices. [andriller.com](https://www.andriller.com/)|Python|[Denis Sazonov](https://github.com/den4uk)|
+|[andriller](https://github.com/den4uk/andriller)|Andriller - is software utility with a collection of forensic tools for smartphones. It performs read-only, forensically sound, non-destructive acquisition from Android devices. [andriller.com](https://github.com/den4uk/andriller)|Python|[Denis Sazonov](https://github.com/den4uk)|
 |[Mobile Security Framework (MobSF)](https://github.com/MobSF/Mobile-Security-Framework-MobSF/)|Mobile Security Framework (MobSF) is an automated, all-in-one mobile application (Android/iOS/Windows) pen-testing, malware analysis and security assessment framework capable of performing static and dynamic analysis. MobSF support mobile app binaries (APK, IPA & APPX) along with zipped source code and provides REST APIs for seamless integration with your CI/CD or DevSecOps pipeline.The Dynamic Analyzer helps you to perform runtime security assessment and interactive instrumented testing.|Python|MobSF Team|
 |[objection](https://github.com/sensepost/objection)|"objection is a runtime mobile exploration toolkit, powered by Frida, built to help you assess the security posture of your mobile applications, without needing a jailbreak."|Python & TypeScript|[sensepost](https://github.com/sensepost)|
 |[RMS - Runtime Mobile Security](https://github.com/m0bilesecurity/RMS-Runtime-Mobile-Security)|Runtime Mobile Security (RMS) is a powerful web interface that helps you to manipulate Android Java Classes and Methods at Runtime|Python|[@mobilesecurity_](https://twitter.com/mobilesecurity_)|
