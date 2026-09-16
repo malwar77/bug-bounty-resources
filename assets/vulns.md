@@ -3,8 +3,8 @@
 ## Vulnerabilities 💉
 This page is created to help hackers understand a specific vulnerability type in details. 
 
-- If you would like to get some hands on experience by hacking more in detailed labs, please read the [labs](../assets/labs.md) page
-- If you would like to read blog posts and see example vulnerability, please read the [blog posts](../assets/blogposts.md) page
+- If you would like to get some hands on experience by hacking more in detailed labs, please read the [labs](./labs.md) page
+- If you would like to read blog posts and see example vulnerability, please read the [blog posts](./blogposts.md) page
 
 ### Online Resources & Frameworks
 - [Owasp Top 10](https://owasp.org/www-project-top-ten/)

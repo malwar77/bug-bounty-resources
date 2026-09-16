@@ -36,7 +36,7 @@
 
 #### XSS
 - [alert 1 to win](https://alf.nu/alert1/)
-- [prompt(1)](https://prompt.ml/0)
+- [prompt(1)](https://github.com/cure53/XSS-Challenge-Wiki/wiki/prompt.ml)
 - [XSS Game By Google](https://xss-game.appspot.com/)
 
 ### General Hacking

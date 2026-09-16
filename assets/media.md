@@ -38,7 +38,7 @@ If you are interested in interviews with the top hackers and bug bounty hunters,
 - [Rana Khalil](https://www.youtube.com/@RanaKhalil101)
 - [David Bombal](https://www.youtube.com/@davidbombal)
 - [NetworkChuck](https://www.youtube.com/NetworkChuck)
-- [PhD Security](https://www.youtube.com/c/PHDSecurity)
+- [PhD Security](https://www.youtube.com/results?search_query=PHD+Security)
 - [HackerSploit](https://www.youtube.com/HackerSploit)
 
 ## Streamers
@@ -87,7 +87,7 @@ The following list does not exclusively contains Bug Bounty themed Accounts but 
 |[@Almroot](https://twitter.com/Almroot) | Fredrik N. Almroth | Co-Founder, Researcher and Head of Engineering at @detectify. Coder of stuff, breaker of things. PGP/MIT: 0xEDF8D9828B06A7F7
 |[@Alra3ees](https://twitter.com/Alra3ees) | Emad Shanab | A Lawyer & A noooob. Every Law has its own Bugs. I have no Facebook. https://t.co/n9U5HPkWcV https://t.co/46EDOU8gnq
 |[@alxbrsn](https://twitter.com/alxbrsn) | Alex Birsan |
-|[@Alyssa_Herrera_](https://x.com/Alyssa_Herrera_) | Alyssa Herrera Perez 🇩🇰 🏳️‍⚧️ | Sr. App Sec engineer. Bug bounty hunter on @Hacker0x01. @detectify crowdsource hacker, and @hacknotcrime Advocate. Loves birbs. Furry Hacker. NB-They/them
+|[@Alyssa_Herrera_](https://hackerone.com/alyssa_herrera) | Alyssa Herrera Perez 🇩🇰 🏳️‍⚧️ | Sr. App Sec engineer. Bug bounty hunter on @Hacker0x01. @detectify crowdsource hacker, and @hacknotcrime Advocate. Loves birbs. Furry Hacker. NB-They/them
 |[@ameenmaali](https://twitter.com/ameenmaali) | Ameen | appsec infant, bug bounty fetus -   Blog: https://t.co/IULDdK4Wh1 (@abugzlife1)
 |[@andirrahmani1](https://twitter.com/andirrahmani1) | Andi Rrahmani | Security Researcherhttps://t.co/Xenw3BiShq
 |[@anshuman_bh](https://twitter.com/anshuman_bh) | Anshuman Bhartiya | I love Security, Automation, Innovation, Challenges and Changes. My opinions here, not my employers. https://t.co/RyQUQzkYzm

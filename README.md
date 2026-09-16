@@ -40,3 +40,24 @@ I have also put together my own resource:
 ---
 If you have more questions or suggestions, check out [NahamSec's Discord](https://discord.gg/9jZxjQ5)!<br>
 
+---
+
+## Local Development & Link Auditing
+
+To prevent broken links and formatting regressions before submitting changes:
+
+```bash
+# Make the check script executable (if needed) and run
+chmod +x scripts/lint-and-check.sh
+./scripts/lint-and-check.sh
+```
+
+Or run the Python fallback directly:
+```bash
+python3 scripts/check_links.py
+```
+
+### Pre-requisites
+- **Node.js 18+** (for `markdownlint-cli2`)
+- **Python 3.8+**
+- Optional: [lychee CLI](https://github.com/lycheeverse/lychee) (`brew install lychee` or `cargo install lychee`)

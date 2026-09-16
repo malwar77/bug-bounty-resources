@@ -1,5 +1,5 @@
 # Resources-for-Beginner-Bug-Bounty-Hunters
-This page is designated to hosts blog posts on particular vulnerability and techniques that have led to a bounty. If you would like to learn more about specific vulnerability types, please visit [Vulnerability Types](../assets/vulns.md)!
+This page is designated to hosts blog posts on particular vulnerability and techniques that have led to a bounty. If you would like to learn more about specific vulnerability types, please visit [Vulnerability Types](./vulns.md)!
 
 ## NahamSec's Favorite Learning Resources
 - [HackerOne Hacktivity](https://hackerone.com/hacktivity)
@@ -93,7 +93,7 @@ You can find a ton of awesome XSS reports by searching through the HackerOne Hac
 - [Time-Based Blind SQL Injection In GraphQL](https://medium.com/bugbountywriteup/time-based-blind-sql-injection-in-graphql-39a25a1dfb3c) - Divyanshu Shukla
 - [SQL Injection Extracts Starbucks Enterprise Accounting, Financial, Payroll Database](https://hackerone.com/reports/531051) - spaceraccoon
 - [Finding SQL injections fast with white-box analysis — a recent bug example](https://medium.com/@frycos/finding-sql-injections-fast-with-white-box-analysis-a-recent-bug-example-ca449bce6c76?) - [@frycos](https://twitter.com/frycos)
-- [How we hacked one of the worlds largest Cryptocurrency Website](https://web.archive.org/web/20210123061614/https://web.archive.org/web/20210123061614/https://strynx.org/insecure-crypto-code-execution/) - [strynx](https://web.archive.org/web/20210123061614/https://strynx.org/)
+- [How we hacked one of the worlds largest Cryptocurrency Website](https://web.archive.org/web/20210123061614/https://strynx.org/insecure-crypto-code-execution/) - [strynx](https://web.archive.org/web/20210123061614/https://strynx.org/)
 - [Blind SQL Injection on windows10.hi-tech.mail.ru](https://hackerone.com/reports/786044) - Просто душка (api_0)
 - [How to Hack Database Links in SQL Server!](https://blog.netspi.com/how-to-hack-database-links-in-sql-server/) - Antti Rantasaari
 
@@ -149,8 +149,8 @@ You can find a ton of awesome XSS reports by searching through the HackerOne Hac
 - [Hacking GitHub with Unicode's dotless 'i'](https://eng.getwisdom.io/hacking-github-with-unicode-dotless-i/)
 - [Abusing autoresponders and email bounces](https://medium.com/intigriti/abusing-autoresponders-and-email-bounces-9b1995eb53c2) - securinti
 - [Abusing HTTP hop-by-hop request headers](https://nathandavison.com/blog/abusing-http-hop-by-hop-request-headers) - [@nj_dav](https://twitter.com/nj_dav)
-- [Abusing ImageMagick to obtain RCE](https://web.archive.org/web/20210123061614/https://web.archive.org/web/20210123061614/https://strynx.org/imagemagick-rce/) - [strynx](https://web.archive.org/web/20210123061614/https://strynx.org/)
-- [How to Get a Finger on the Pulse of Corporate Networks via the SSL VPN](https://blog.detectify.com/2019/09/19/alyssa-herrera-pulse-corporate-networks-ssl-vpn/) - [Alyssa Herrera](https://x.com/Alyssa_Herrera_)
+- [Abusing ImageMagick to obtain RCE](https://web.archive.org/web/20210123061614/https://strynx.org/imagemagick-rce/) - [strynx](https://web.archive.org/web/20210123061614/https://strynx.org/)
+- [How to Get a Finger on the Pulse of Corporate Networks via the SSL VPN](https://blog.detectify.com/2019/09/19/alyssa-herrera-pulse-corporate-networks-ssl-vpn/) - [Alyssa Herrera](https://hackerone.com/alyssa_herrera)
 - [Top 10 web hacking techniques of 2019](https://portswigger.net/research/top-10-web-hacking-techniques-of-2019) by [James Kettle](https://twitter.com/albinowax)
 - [Understanding Search Syntax on Github](https://help.github.com/en/github/searching-for-information-on-github/understanding-the-search-syntax#exclude-certain-results) by Github
 - [URL link spoofing (Slack)](https://hackerone.com/reports/481472) by Akaki Tsunoda (akaki)

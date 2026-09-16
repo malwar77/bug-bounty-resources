@@ -13,7 +13,7 @@ Since there are quite a lot of people asking for Beginner Guides to Mobile Hacki
 - [Android App Reverse Engineering 101](https://maddiestone.github.io/AndroidAppRE/) by [@maddiestone](https://twitter.com/maddiestone)
 
 ## Tools
-Tools specific for mobile hacking can be found [here](./assets/tools.md#mobile-hacking).
+Tools specific for mobile hacking can be found [here](./tools.md#mobile-hacking).
 
 ## Misc
 - [Q&A With Android Hacker bagipro](https://www.hackerone.com/blog/AndroidHackingMonth-qa-with-bagipro)

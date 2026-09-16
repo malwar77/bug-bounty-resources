@@ -59,7 +59,7 @@ The bug bounty ecosystem has largely converged around modular, high-performance 
 ### Proxy & Network Sniffer
 | Name 	| Description 	| Written in   | Created by   |
 |------	|-------------	|------------  |------------- |
-|[Burp Suite](https://portswigger.net/burp)|A Proxy to intercept and manipulate Web Traffic (free & paid version). [Here](./assets/setup.md#setup) you can find Tips & Tricks to get started with Burp.|Java|Port Swigger|
+|[Burp Suite](https://portswigger.net/burp)|A Proxy to intercept and manipulate Web Traffic (free & paid version). [Here](./setup.md#setup) you can find Tips & Tricks to get started with Burp.|Java|Port Swigger|
 |[OWASP Zap Proxy](https://www.zaproxy.org/)|A Proxy to intercept and manipulate Web Traffic (free).|Java|OWASP
 |[Caido](https://caido.io/)|A lightweight web security auditing toolkit.|Web|Caido|
 |[Wireshark](https://www.wireshark.org)|Wireshark is a network protocol analyzer that lets you capture and read network packets.|C, C++|The Wireshark team|
