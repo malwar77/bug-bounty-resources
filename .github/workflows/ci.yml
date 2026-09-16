@@ -8,10 +8,31 @@ on:
   schedule:
     - cron: '0 8 * * 1'
   workflow_dispatch:
+    inputs:
+      linkcheck_timeout:
+        description: 'Request timeout in seconds for link checks'
+        required: false
+        default: '15'
+      linkcheck_concurrency:
+        description: 'Maximum concurrent link-check requests'
+        required: false
+        default: '8'
+      cache_dir:
+        description: 'Directory for the lychee link cache'
+        required: false
+        default: '.lycheecache'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
+env:
+  # Quality gate: which result categories FAIL the build.
+  # Everything else (REDIRECTED, BOT_PROTECTED_OR_AUTH, ARCHIVE_UNREACHABLE) is a warning only.
+  QUALITY_GATE_CATEGORIES: 'BROKEN_NOT_FOUND,BROKEN_INTERNAL_FILE,TIMEOUT_OR_DNS_FAILURE,HTTP_5XX'
+  LINKCHECK_TIMEOUT: '15'
+  LINKCHECK_CONCURRENCY: '8'
+  LINKCHECK_CACHE_DIR: '.lycheecache'
 
 jobs:
   markdown-lint:
@@ -26,7 +47,6 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: '**/package*.json'
 
       - name: Cache npm global tools
         uses: actions/cache@v4
@@ -37,44 +57,40 @@ jobs:
             ${{ runner.os }}-npm-markdownlint-
 
       - name: Run markdownlint-cli2
-        run: |
-          npx --yes markdownlint-cli2 "**/*.md" "#node_modules"
+        run: npx --yes markdownlint-cli2 "**/*.md" "#node_modules"
 
   link-check:
-    name: Link Checking & Annotations
+    name: Link Checking & Quality Gate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Restore lychee cache
         uses: actions/cache@v4
         with:
-          path: .lycheecache
+          path: ${{ env.LINKCHECK_CACHE_DIR }}
           key: ${{ runner.os }}-lychee-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-lychee-
 
-      - name: Run lychee link checker with tuned timeouts
-        id: lychee
+      - name: Run lychee link checker (config from lychee.toml, overrides from inputs)
         uses: lycheeverse/lychee-action@v2
         with:
+          # lychee reads lychee.toml automatically; timeout/concurrency overridden by inputs
           args: >-
             --verbose
             --no-progress
-            --exclude-mail
-            --max-concurrency 8
-            --timeout 15
+            --timeout ${{ github.event.inputs.linkcheck_timeout || env.LINKCHECK_TIMEOUT }}
+            --max-concurrency ${{ github.event.inputs.linkcheck_concurrency || env.LINKCHECK_CONCURRENCY }}
             --cache
             --max-cache-age 1d
-            --accept 200,204,401,403
-            --exclude "^https://(twitter|x)\\.com"
-            --exclude "^https://(www\\.)?linkedin\\.com"
-            --exclude "^https://(www\\.)?youtube\\.com"
-            --exclude "^https://medium\\.com"
-            --exclude "^https://(www\\.)?amazon\\.com"
-            --exclude "^https://amzn\\.to"
-            --exclude "^https://web\\.archive\\.org"
+            --cache-exclude-status '429,5..'
             --output lychee-report.md
             --format markdown
             "**/*.md"
@@ -82,18 +98,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate PR Annotations & Step Summary
+      - name: Quality gate, annotations & step summary
         run: |
-          python3 scripts/check_links.py | tee audit_output.txt || true
-          
-          echo "### 🔗 Link & Markdown Audit Summary" >> $GITHUB_STEP_SUMMARY
+          export QUALITY_GATE_CATEGORIES="${{ env.QUALITY_GATE_CATEGORIES }}"
+          export LINKCHECK_CACHE_DIR="${{ env.LINKCHECK_CACHE_DIR }}"
+          python3 scripts/check_links.py | tee audit_output.txt
+          GATE_STATUS="${PIPESTATUS[0]}"
+          echo "### 🔗 Link Audit Summary" >> $GITHUB_STEP_SUMMARY
           if [ -f lychee-report.md ]; then
             cat lychee-report.md >> $GITHUB_STEP_SUMMARY
           fi
-          
-          # Check for errors in output and annotate PR
-          while IFS= read -r line; do
-            if [[ "$line" =~ ^::error ]]; then
-              echo "$line"
-            fi
-          done < audit_output.txt
+          echo "Quality gate categories (fail): \`$QUALITY_GATE_CATEGORIES\`" >> $GITHUB_STEP_SUMMARY
+          echo "Gate exit status: $GATE_STATUS" >> $GITHUB_STEP_SUMMARY
+          exit "$GATE_STATUS"

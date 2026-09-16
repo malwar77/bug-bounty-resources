@@ -1,38 +1,36 @@
 #!/usr/bin/env bash
 set -eo pipefail
+# Local checks with the same configuration as CI (reads lychee.toml).
+# Override with env vars: LINKCHECK_TIMEOUT, LINKCHECK_CONCURRENCY, QUALITY_GATE_CATEGORIES.
 
-echo "=== 1. Running Markdown Linting ==="
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$REPO_ROOT"
+
+echo "=== 1. Markdown Linting ==="
 if command -v markdownlint-cli2 >/dev/null 2>&1; then
   markdownlint-cli2 "**/*.md" "#node_modules"
 elif command -v npx >/dev/null 2>&1; then
   npx --yes markdownlint-cli2 "**/*.md" "#node_modules"
 else
-  echo "Notice: Neither markdownlint-cli2 nor npx found. Install via 'npm install -g markdownlint-cli2'."
+  echo "Notice: markdownlint-cli2/npx not found. Install Node.js 18+ first."
 fi
 
 echo ""
-echo "=== 2. Running Link Checker (lychee) ==="
+echo "=== 2. Link Checking (lychee.toml + scripts/check_links.py) ==="
 if command -v lychee >/dev/null 2>&1; then
+  # lychee picks up lychee.toml automatically; env vars override for parity with CI
   lychee \
-    --verbose \
     --no-progress \
-    --exclude-mail \
-    --max-concurrency 8 \
-    --timeout 15 \
-    --accept 200,204,401,403 \
-    --exclude "^https://(twitter|x)\\.com" \
-    --exclude "^https://(www\\.)?linkedin\\.com" \
-    --exclude "^https://(www\\.)?youtube\\.com" \
-    --exclude "^https://medium\\.com" \
-    --exclude "^https://(www\\.)?amazon\\.com" \
-    --exclude "^https://amzn\\.to" \
-    --exclude "^https://web\\.archive\\.org" \
-    "**/*.md"
-elif command -v npx >/dev/null 2>&1; then
-  echo "lychee is not in PATH. Running fallback link check with Python audit script..."
-  python3 scripts/check_links.py
-else
-  echo "Notice: lychee CLI not installed. Run 'brew install lychee' or 'cargo install lychee'."
+    --cache \
+    --max-cache-age 1d \
+    --timeout "${LINKCHECK_TIMEOUT:-15}" \
+    --max-concurrency "${LINKCHECK_CONCURRENCY:-8}" \
+    --output lychee-report.md \
+    --format markdown \
+    "**/*.md" || true
 fi
 
-echo "=== Checks complete ==="
+python3 scripts/check_links.py
+GATE=$?
+echo "=== Checks complete (quality gate exit: $GATE) ==="
+exit "$GATE"

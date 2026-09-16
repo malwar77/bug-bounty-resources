@@ -1,0 +1,30 @@
+# Unified Link Checker Configuration
+# Shared by CI (.github/workflows/ci.yml) and local scripts (scripts/) so they never drift.
+# CI can override values via workflow inputs / environment variables.
+
+# Request timeout in seconds
+timeout = 15
+
+# Maximum concurrent requests
+max_concurrency = 8
+
+# Acceptable HTTP status codes (treated as pass, not error)
+accept = [200, 204, 401, 403]
+
+# Link cache
+cache = true
+max_cache_age = "1d"
+
+# Exclude email addresses
+exclude_mail = true
+
+# Domains excluded from active crawling (bot protection / rate limiting)
+exclude = [
+  '^https://(twitter|x)\.com',
+  '^https://(www\.)?linkedin\.com',
+  '^https://(www\.)?youtube\.com',
+  '^https://medium\.com',
+  '^https://(www\.)?amazon\.com',
+  '^https://amzn\.to',
+  '^https://web\.archive\.org'
+]
